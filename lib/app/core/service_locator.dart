@@ -6,9 +6,13 @@ import 'package:wallpaper_app/data/local/database_helper.dart';
 import 'package:wallpaper_app/data/network/dio_factory.dart';
 import 'package:wallpaper_app/data/network/network_info.dart';
 import 'package:wallpaper_app/data/remote/wallpaper_service.dart';
+import 'package:wallpaper_app/data/repository/favourite_repository.dart';
 import 'package:wallpaper_app/data/repository/home_repository.dart';
 import 'package:wallpaper_app/data/repository/search_repository.dart';
 import 'package:wallpaper_app/domain/repository/repositories.dart';
+import 'package:wallpaper_app/domain/usecase/favourites/add_to_favourite_usecase.dart';
+import 'package:wallpaper_app/domain/usecase/favourites/get_favourites_usecase.dart';
+import 'package:wallpaper_app/domain/usecase/favourites/remove_favourite_usecase.dart';
 import 'package:wallpaper_app/domain/usecase/get_random_wallpapers_usecase.dart';
 import 'package:wallpaper_app/domain/usecase/search_photos_usecase.dart';
 
@@ -19,6 +23,7 @@ void startServiceLocator() {
   _setupLocalAppService();
   _setupAppRepository();
   setupUseCases();
+  setupFavouriteUsecases();
 }
 
 void _setupRemoteAppService() {
@@ -42,6 +47,8 @@ _setupAppRepository() {
       () => HomeRepositoryImpl(getIt(), getIt()));
   getIt.registerLazySingleton<SearchRepository>(
       () => SearchRepositoryImpl(getIt(), getIt()));
+  getIt.registerLazySingleton<FavouriteRepository>(
+      () => FavouriteRepositoryImpl(getIt()));
 }
 
 setupUseCases() {
@@ -49,4 +56,13 @@ setupUseCases() {
       () => SearchPhotoUsecase(getIt()));
   getIt.registerLazySingleton<GetRandomWallpapersUsecase>(
       () => GetRandomWallpapersUsecase(getIt()));
+}
+
+void setupFavouriteUsecases() {
+  getIt.registerLazySingleton<GetFavouritesUsecase>(
+      () => GetFavouritesUsecase(getIt()));
+  getIt.registerLazySingleton<AddToFavouriteUsecase>(
+      () => AddToFavouriteUsecase(getIt()));
+  getIt.registerLazySingleton<RemoveFavouritePhotoUsecase>(
+      () => RemoveFavouritePhotoUsecase(getIt()));
 }

@@ -7,6 +7,6 @@ abstract class Failure extends Equatable {
   List<Object?> get props => [message];
 }
 
-class DatebaseFailure extends Failure {
-  const DatebaseFailure(super.message);
+class DatabaseFailure extends Failure {
+  const DatabaseFailure(super.message);
 }
