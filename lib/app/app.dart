@@ -8,7 +8,8 @@ class WallpaperApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Wallpaper App',
       theme: defaultTheme,
       home: const HomeScreen(),
     );

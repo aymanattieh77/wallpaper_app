@@ -15,4 +15,5 @@ class AppConstants {
   static const String photographerBy = "photographer By";
   static const String search = "Search";
   static const String favoritesPhotos = "Favorites Photos";
+  static const String download = "Download";
 }
