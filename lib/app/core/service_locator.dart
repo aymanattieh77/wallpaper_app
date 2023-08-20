@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:wallpaper_app/data/data_source/local_data_source.dart';
 import 'package:wallpaper_app/data/data_source/remote_date_source.dart';
+import 'package:wallpaper_app/data/local/database_helper.dart';
 import 'package:wallpaper_app/data/network/dio_factory.dart';
 import 'package:wallpaper_app/data/network/network_info.dart';
 import 'package:wallpaper_app/data/remote/wallpaper_service.dart';
@@ -13,18 +15,26 @@ import 'package:wallpaper_app/domain/usecase/search_photos_usecase.dart';
 final getIt = GetIt.instance;
 
 void startServiceLocator() {
-  _setupAppService();
+  _setupRemoteAppService();
+  _setupLocalAppService();
   _setupAppRepository();
   setupUseCases();
 }
 
-void _setupAppService() {
+void _setupRemoteAppService() {
   final dio = DioFactory().dio;
   getIt.registerLazySingleton<WallpaperService>(() => WallpaperService(dio));
   getIt.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(getIt()));
   getIt.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
+}
+
+void _setupLocalAppService() {
+  final DatabaseHelper databaseHelper = DatabaseHelper.instance;
+
+  getIt.registerLazySingleton<LocalDataSource>(
+      () => LocalDataSourceImpl(databaseHelper));
 }
 
 _setupAppRepository() {

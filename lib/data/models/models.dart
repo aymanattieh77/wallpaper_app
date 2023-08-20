@@ -37,6 +37,20 @@ class PhotoModel extends Photo {
     required super.src,
   });
 
+  Map<String, Object> toMap() {
+    return {
+      "id": id,
+      "width": width,
+      "height": height,
+      'alt': alt,
+      'url': alt,
+      'photographer': alt,
+      'src_original': src.original,
+      'src_large': src.large,
+      'src_medium': src.medium,
+    };
+  }
+
   static Photo fromJson(Map<String, dynamic> json) {
     return Photo(
       id: json['id'] as int,
@@ -56,6 +70,13 @@ class SrcModel extends Src {
     required super.large,
     required super.medium,
   });
+  Map<String, dynamic> toMap() {
+    return {
+      'original': original,
+      'large': large,
+      'medium': medium,
+    };
+  }
 
   static Src fromJson(Map<String, dynamic> json) {
     return Src(

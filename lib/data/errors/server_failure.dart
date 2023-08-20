@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:wallpaper_app/data/error/failure.dart';
+import 'package:wallpaper_app/data/errors/failure.dart';
 
 class ServerFailure extends Failure {
   const ServerFailure(super.message);
