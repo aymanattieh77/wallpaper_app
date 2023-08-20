@@ -4,6 +4,8 @@ class AppConstants {
   // API Constants
 
   static const pexelsBaseUrl = "https://api.pexels.com/v1/";
+  static const apiKey =
+      "NzfYIWZhIJiZXlfrX9sLdnm0jdLr6VN54nPQoR0XjDijJsw7cYaAdBcc";
 
   //  App Strings
   static const String exploreFree = "Explore Free";
