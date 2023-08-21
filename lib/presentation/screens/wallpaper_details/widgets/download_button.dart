@@ -13,11 +13,12 @@ class DownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColor.kkBlack,
           maximumSize: const Size(double.infinity, 60),
+          alignment: Alignment.center,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -25,26 +26,30 @@ class DownloadButton extends StatelessWidget {
         onPressed: () {
           context.read<WallpaperDetailProvider>().downloadWallpaper(imageUrl);
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Consumer<WallpaperDetailProvider>(builder: (_, value, __) {
-              bool isSuccess = value.state == WallpaperDetailStates.success;
-              return Icon(
-                isSuccess ? Icons.download_done : Icons.file_download_outlined,
-                color: isSuccess ? AppColor.green : AppColor.white,
-              );
-            }),
-            const SizedBox(width: 5),
-            const Text(
-              AppConstants.download,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: AppColor.white,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Consumer<WallpaperDetailProvider>(builder: (_, value, __) {
+                bool isSuccess = value.state == WallpaperDetailStates.success;
+                return Icon(
+                  isSuccess
+                      ? Icons.download_done
+                      : Icons.file_download_outlined,
+                  color: isSuccess ? AppColor.green : AppColor.white,
+                );
+              }),
+              const SizedBox(width: 5),
+              const Text(
+                AppConstants.download,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.white,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

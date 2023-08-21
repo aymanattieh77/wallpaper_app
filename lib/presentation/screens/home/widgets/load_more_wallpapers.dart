@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:wallpaper_app/app/constants/constants.dart';
+
 import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
 
 class LoadMoreWallpaperWidget extends StatelessWidget {
@@ -11,7 +14,7 @@ class LoadMoreWallpaperWidget extends StatelessWidget {
       builder: (_, value, __) {
         if (Provider.of<HomeProvider>(context).isLoadMore) {
           return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: AppConstants.kPadding20),
             child: CircularProgressIndicator(),
           );
         }

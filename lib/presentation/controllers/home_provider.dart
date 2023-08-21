@@ -23,8 +23,9 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  start() {
-    getRandomWallpapers();
+  Future<void> start() async {
+    await _getRandomWallpapers();
+
     // add Listener in scrollController
     scrollController.addListener(() {
       _loadMorephotos();
@@ -37,11 +38,11 @@ class HomeProvider extends ChangeNotifier {
       isLoadMore = true;
       _setState(HomeStates.success);
 
-      await getRandomWallpapers(isFirstFetch: false);
+      await _getRandomWallpapers(isFirstFetch: false);
     }
   }
 
-  Future<void> getRandomWallpapers({bool isFirstFetch = true}) async {
+  Future<void> _getRandomWallpapers({bool isFirstFetch = true}) async {
     page = _getRandomNumber();
     if (isFirstFetch) {
       _setState(HomeStates.loading);
@@ -61,10 +62,16 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> onRefresh() async {
-    await getRandomWallpapers();
+    await _getRandomWallpapers();
   }
 
   int _getRandomNumber() {
     return Random().nextInt(30);
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }

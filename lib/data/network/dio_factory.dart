@@ -17,17 +17,18 @@ class DioFactory {
 
   DioFactory.internal() {
     final baseOptions = BaseOptions(
-      connectTimeout: const Duration(milliseconds: 60 * 1000),
+      connectTimeout: const Duration(milliseconds: 30 * 1000),
       receiveDataWhenStatusError: true,
       headers: headers,
-      receiveTimeout: const Duration(milliseconds: 60 * 1000),
-      sendTimeout: const Duration(milliseconds: 60 * 1000),
+      receiveTimeout: const Duration(milliseconds: 30 * 1000),
+      sendTimeout: const Duration(milliseconds: 30 * 1000),
     );
 
     _dio = Dio(baseOptions);
 
     if (kDebugMode) {
-      _dio.interceptors.add(LogInterceptor());
+      _dio.interceptors
+          .add(LogInterceptor(requestHeader: false, responseHeader: false));
     }
   }
 }

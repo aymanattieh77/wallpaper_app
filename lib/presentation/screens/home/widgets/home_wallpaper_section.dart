@@ -18,7 +18,11 @@ class HomeWallpaperSection extends StatelessWidget {
             color: Colors.red,
           );
         } else if (value.state == HomeStates.success) {
-          return WallpaperGridview(photos: value.photos);
+          return WallpaperGridview(
+            photos: value.photos,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+          );
         } else {
           return Container(
             height: 10,

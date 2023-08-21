@@ -43,7 +43,7 @@ class HomeHeaderSection extends StatelessWidget {
           const SizedBox(height: 20),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed(Routes.search);
+              _goSearchScreen(context);
             },
             child: const SearchField(
               enabled: false,
@@ -52,5 +52,9 @@ class HomeHeaderSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _goSearchScreen(BuildContext context) {
+    Navigator.of(context).pushNamed(Routes.search);
   }
 }

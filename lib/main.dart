@@ -8,7 +8,7 @@ import 'package:wallpaper_app/presentation/controllers/wallpaper_detail_provider
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   startServiceLocator();
-  setupHomeService();
+
   runApp(
     MultiProvider(
       providers: [

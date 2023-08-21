@@ -32,6 +32,7 @@ class SearchField extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                autofocus: true,
                 enabled: enabled,
                 controller: controller,
                 onSubmitted: onSubmitted,
