@@ -39,6 +39,7 @@ class SearchProvider extends ChangeNotifier {
       return;
     }
     searchQuery = searchValue;
+    photos.clear();
     await searchPhotos(isFirstFetch: true);
   }
 
