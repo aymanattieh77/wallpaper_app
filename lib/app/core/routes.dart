@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/app/core/service_locator.dart';
 import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
+import 'package:wallpaper_app/presentation/screens/favourite/favourite_screen.dart';
 import 'package:wallpaper_app/presentation/screens/home/home_screen.dart';
 import 'package:wallpaper_app/presentation/screens/search/search_screen.dart';
 
@@ -18,6 +19,8 @@ class AppRouter {
         return screen(_home());
       case Routes.search:
         return screen(_search());
+      case Routes.favourites:
+        return screen(_favourites());
 
       default:
         return screen(const Scaffold());
@@ -38,5 +41,9 @@ class AppRouter {
       create: (context) => getIt<SearchProvider>()..start(),
       child: const SearchScreen(),
     );
+  }
+
+  static _favourites() {
+    return const FavourtiteScreen();
   }
 }

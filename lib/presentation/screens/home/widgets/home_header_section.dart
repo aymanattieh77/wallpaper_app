@@ -34,7 +34,7 @@ class HomeHeaderSection extends StatelessWidget {
               const Spacer(),
               IconButton(
                 onPressed: () {
-                  //TODO go Favourite screen
+                  Navigator.of(context).pushNamed(Routes.favourites);
                 },
                 icon: const Icon(Icons.favorite, color: AppColor.black),
               ),

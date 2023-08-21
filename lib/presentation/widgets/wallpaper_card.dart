@@ -45,10 +45,12 @@ class WallpaperCard extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 30,
               right: 5,
-              child: FavouriteIconButton(),
+              child: FavouriteIconButton(
+                photo: photo,
+              ),
             ),
             Container(
               height: MediaQuery.sizeOf(context).height * .10,

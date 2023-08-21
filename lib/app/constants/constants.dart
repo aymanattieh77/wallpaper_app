@@ -16,4 +16,6 @@ class AppConstants {
   static const String search = "Search";
   static const String favoritesPhotos = "Favorites Photos";
   static const String download = "Download";
+  static const String youDontHaveFavourite =
+      "You Don't Have Favourite Photos Yet!";
 }

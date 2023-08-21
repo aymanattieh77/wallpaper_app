@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
+import 'package:wallpaper_app/domain/entities/entities.dart';
 import 'package:wallpaper_app/presentation/widgets/favourite_icon_button.dart';
 
 class WallpaperDetailHeaderSection extends StatelessWidget {
-  const WallpaperDetailHeaderSection({super.key, required this.photographer});
-  final String photographer;
+  const WallpaperDetailHeaderSection({super.key, required this.photo});
+  final Photo photo;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -17,13 +18,15 @@ class WallpaperDetailHeaderSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
-                BackButton(
+                const BackButton(
                   color: AppColor.white,
                 ),
-                Spacer(),
-                FavouriteIconButton(),
+                const Spacer(),
+                FavouriteIconButton(
+                  photo: photo,
+                ),
               ],
             ),
             const Text(
@@ -35,7 +38,7 @@ class WallpaperDetailHeaderSection extends StatelessWidget {
               ),
             ),
             Text(
-              photographer,
+              photo.photographer,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.normal,

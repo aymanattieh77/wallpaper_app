@@ -9,10 +9,7 @@ class WallpaperDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WallpaperDetailBody(
-        imageUrl: photo.src.large,
-        photographer: photo.photographer,
-      ),
+      body: WallpaperDetailBody(photo: photo),
       floatingActionButton: const DownloadButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

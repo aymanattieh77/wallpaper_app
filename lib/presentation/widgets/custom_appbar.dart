@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/app/constants/colors.dart';
-import 'package:wallpaper_app/app/constants/constants.dart';
 
-class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const SearchAppbar({super.key});
-
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppbar({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -12,7 +11,7 @@ class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColor.white,
       foregroundColor: AppColor.kkBlack,
       title: Text(
-        AppConstants.searchPhotos,
+        title,
         style: Theme.of(context).textTheme.bodySmall,
       ),
       centerTitle: true,
