@@ -9,7 +9,7 @@ Wallpapers App
  - Favourite Screen Contains Favourite Wallpapers.
  - Wallpaper Detail Screen Contains selected Wallpapers filled Screen.
    
-# Pexels API used for wallpapers data
+## Pexels API used for wallpapers data
 
 ## Features
   - Explore Random Wallpapers.
