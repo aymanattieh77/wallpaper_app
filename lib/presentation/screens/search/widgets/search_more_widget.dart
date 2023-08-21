@@ -10,8 +10,8 @@ class SearchMoreWidget extends StatelessWidget {
     return Consumer<SearchProvider>(
       builder: (_, value, __) {
         if (Provider.of<SearchProvider>(context).isLoadMore) {
-          return Center(
-            child: const Padding(
+          return const Center(
+            child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20),
               child: CircularProgressIndicator(),
             ),
