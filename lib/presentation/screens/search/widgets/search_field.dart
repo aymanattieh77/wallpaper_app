@@ -3,9 +3,11 @@ import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key, this.controller, this.enabled = true});
+  const SearchField(
+      {super.key, this.controller, this.enabled = true, this.onSubmitted});
   final TextEditingController? controller;
   final bool enabled;
+  final void Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +34,7 @@ class SearchField extends StatelessWidget {
               child: TextField(
                 enabled: enabled,
                 controller: controller,
+                onSubmitted: onSubmitted,
                 maxLines: 1,
                 decoration: InputDecoration(
                   filled: true,

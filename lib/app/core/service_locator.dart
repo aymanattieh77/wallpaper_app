@@ -16,6 +16,7 @@ import 'package:wallpaper_app/domain/usecase/favourites/remove_favourite_usecase
 import 'package:wallpaper_app/domain/usecase/get_random_wallpapers_usecase.dart';
 import 'package:wallpaper_app/domain/usecase/search_photos_usecase.dart';
 import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
+import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -52,10 +53,7 @@ _setupAppRepository() {
       () => FavouriteRepositoryImpl(getIt()));
 }
 
-setupUseCases() {
-  getIt.registerLazySingleton<SearchPhotoUsecase>(
-      () => SearchPhotoUsecase(getIt()));
-}
+setupUseCases() {}
 
 void setupFavouriteUsecases() {
   getIt.registerLazySingleton<GetFavouritesUsecase>(
@@ -71,5 +69,13 @@ void setupHomeService() {
     getIt.registerLazySingleton<GetRandomWallpapersUsecase>(
         () => GetRandomWallpapersUsecase(getIt()));
     getIt.registerFactory<HomeProvider>(() => HomeProvider(getIt()));
+  }
+}
+
+setupSearchService() {
+  if (!GetIt.I.isRegistered<SearchProvider>()) {
+    getIt.registerLazySingleton<SearchPhotoUsecase>(
+        () => SearchPhotoUsecase(getIt()));
+    getIt.registerFactory<SearchProvider>(() => SearchProvider(getIt()));
   }
 }

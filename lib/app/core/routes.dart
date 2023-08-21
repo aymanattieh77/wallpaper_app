@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/app/core/service_locator.dart';
-import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
+import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
 import 'package:wallpaper_app/presentation/screens/home/home_screen.dart';
 import 'package:wallpaper_app/presentation/screens/search/search_screen.dart';
 
@@ -17,7 +17,7 @@ class AppRouter {
       case Routes.home:
         return screen(_home());
       case Routes.search:
-        return screen(_home());
+        return screen(_search());
 
       default:
         return screen(const Scaffold());
@@ -33,6 +33,10 @@ class AppRouter {
   }
 
   static _search() {
-    return const SearchScreen();
+    setupSearchService();
+    return ChangeNotifierProvider(
+      create: (context) => getIt<SearchProvider>()..start(),
+      child: const SearchScreen(),
+    );
   }
 }

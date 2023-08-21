@@ -14,12 +14,11 @@ class WallpaperCard extends StatelessWidget {
   final Photo photo;
   @override
   Widget build(BuildContext context) {
-    // print(photo.src.original);
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const WallpaperDetailScreen(),
+            builder: (context) => WallpaperDetailScreen(photo: photo),
           ),
         );
       },
@@ -36,6 +35,13 @@ class WallpaperCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: photo.src.original,
                   fit: BoxFit.fill,
+                  alignment: Alignment.center,
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColor.greyAA,
+                    ),
+                  ),
                 ),
               ),
             ),

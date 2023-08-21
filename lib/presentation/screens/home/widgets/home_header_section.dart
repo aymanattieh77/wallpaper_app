@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
-import 'package:wallpaper_app/presentation/screens/search/search_screen.dart';
+import 'package:wallpaper_app/app/core/routes.dart';
 import 'package:wallpaper_app/presentation/screens/search/widgets/search_field.dart';
-import 'package:wallpaper_app/presentation/screens/wallpaper_details/wallpapers_details_screen.dart';
 
 class HomeHeaderSection extends StatelessWidget {
   const HomeHeaderSection({
@@ -44,12 +43,7 @@ class HomeHeaderSection extends StatelessWidget {
           const SizedBox(height: 20),
           InkWell(
             onTap: () {
-              //TODO go Search Screen
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SearchScreen(),
-                ),
-              );
+              Navigator.of(context).pushNamed(Routes.search);
             },
             child: const SearchField(
               enabled: false,

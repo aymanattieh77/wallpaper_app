@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
 import 'package:wallpaper_app/presentation/widgets/wallpaper_girdview.dart';
 
-class WallpaperGridviewSection extends StatelessWidget {
-  const WallpaperGridviewSection({super.key});
+class HomeWallpaperSection extends StatelessWidget {
+  const HomeWallpaperSection({super.key});
 
   @override
   Widget build(BuildContext context) {
