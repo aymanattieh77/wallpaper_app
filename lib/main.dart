@@ -5,6 +5,6 @@ import 'package:wallpaper_app/app/core/service_locator.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   startServiceLocator();
-
+  setupHomeService();
   runApp(const WallpaperApp());
 }

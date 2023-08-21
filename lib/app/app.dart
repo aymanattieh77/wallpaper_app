@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/app/core/routes.dart';
 import 'package:wallpaper_app/app/theme/theme.dart';
 import 'package:wallpaper_app/presentation/screens/home/home_screen.dart';
 
@@ -12,6 +13,8 @@ class WallpaperApp extends StatelessWidget {
       title: 'Wallpaper App',
       theme: defaultTheme,
       home: const HomeScreen(),
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: Routes.home,
     );
   }
 }

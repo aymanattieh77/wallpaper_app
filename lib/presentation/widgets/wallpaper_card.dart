@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
+import 'package:wallpaper_app/domain/entities/entities.dart';
 import 'package:wallpaper_app/presentation/screens/wallpaper_details/wallpapers_details_screen.dart';
 import 'package:wallpaper_app/presentation/widgets/favourite_icon_button.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class WallpaperCard extends StatelessWidget {
   const WallpaperCard({
     super.key,
+    required this.photo,
   });
-
+  final Photo photo;
   @override
   Widget build(BuildContext context) {
+    // print(photo.src.original);
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
@@ -29,8 +33,8 @@ class WallpaperCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               child: AspectRatio(
                 aspectRatio: 5.5 / 8,
-                child: Image.asset(
-                  "assets/images/test_photo.jpeg", //TODO
+                child: CachedNetworkImage(
+                  imageUrl: photo.src.original,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -59,7 +63,7 @@ class WallpaperCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                   Text(
-                    "ayman attieh", //TODO photographer name
+                    photo.photographer,
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ],

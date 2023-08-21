@@ -34,7 +34,7 @@ class SearchScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text("You Search For 'sport'"),
             ),
-            WallpaperGridview(),
+            //todo WallpaperGridview(),
           ],
         ),
       ),
