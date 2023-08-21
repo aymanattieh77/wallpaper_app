@@ -1,15 +1,12 @@
 # wallpaper_app
 
-A new Flutter project.
+Task Project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+![wallpaper_screens](https://github.com/aymanattieh77/wallpaper_app/assets/87063387/ad75fcb6-d6c2-4757-865d-251012b33810)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
