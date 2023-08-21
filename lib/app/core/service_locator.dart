@@ -15,7 +15,7 @@ import 'package:wallpaper_app/domain/usecase/favourites/get_favourites_usecase.d
 import 'package:wallpaper_app/domain/usecase/favourites/remove_favourite_usecase.dart';
 import 'package:wallpaper_app/domain/usecase/get_random_wallpapers_usecase.dart';
 import 'package:wallpaper_app/domain/usecase/search_photos_usecase.dart';
-import 'package:wallpaper_app/presentation/controllers/favourite_prodvider.dart';
+import 'package:wallpaper_app/presentation/controllers/favourite_provider.dart';
 import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
 import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
 
