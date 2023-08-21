@@ -16,7 +16,6 @@ class SearchBody extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       controller: context.read<SearchProvider>().scrollController,
       child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchHeaderSection(),
           SearchWallpaperGirdviewSection(),

@@ -8,17 +8,15 @@ class FavouriteIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        // TODO
-      },
-      hoverColor: AppColor.greyAA,
-      style: ElevatedButton.styleFrom(
+    return InkWell(
+      onTap: () {},
+      child: CircleAvatar(
+        radius: 20,
         backgroundColor: AppColor.kkGrey.withOpacity(0.65),
-      ),
-      icon: const Icon(
-        Icons.favorite_border_outlined,
-        color: AppColor.white,
+        child: const Icon(
+          Icons.favorite_border_outlined,
+          color: AppColor.white,
+        ),
       ),
     );
   }

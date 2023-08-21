@@ -11,6 +11,7 @@ class SearchHeaderSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchField(
             onSubmitted: Provider.of<SearchProvider>(context).onFieldSubmit,
