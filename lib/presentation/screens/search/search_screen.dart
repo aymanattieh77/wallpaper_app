@@ -10,8 +10,19 @@ import 'package:wallpaper_app/presentation/screens/search/widgets/widgets.dart';
 import 'package:wallpaper_app/presentation/widgets/back_to_top_button.dart';
 import 'package:wallpaper_app/presentation/widgets/custom_appbar.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  @override
+  void initState() {
+    super.initState();
+    setupSearchService();
+  }
 
   @override
   Widget build(BuildContext context) {

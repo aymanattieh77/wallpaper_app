@@ -14,6 +14,7 @@ class SearchProvider extends ChangeNotifier {
 
   bool isLoadMore = false;
   List<Photo> photos = [];
+  String errorMessage = "";
   int page = 0;
   String searchQuery = "";
   start() {
@@ -53,7 +54,7 @@ class SearchProvider extends ChangeNotifier {
 
     (await _usecase.call(SearchInputs(query: searchQuery, page: page))).fold(
       (failure) {
-        print(failure.message);
+        errorMessage = failure.message;
         _setState(SearchStates.error);
       },
       (photosList) {

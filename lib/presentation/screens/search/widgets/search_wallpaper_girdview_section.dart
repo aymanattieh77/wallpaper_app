@@ -14,10 +14,8 @@ class SearchWallpaperGirdviewSection extends StatelessWidget {
         if (value.state == SearchStates.loading) {
           return customLoadingIndicator();
         } else if (value.state == SearchStates.error) {
-          return Container(
-            height: 10,
-            color: Colors.red, //TODO
-          );
+          showErrorDialog(context, value.errorMessage);
+          return const SizedBox();
         } else if (value.state == SearchStates.success) {
           return WallpaperGridview(photos: value.photos);
         } else {

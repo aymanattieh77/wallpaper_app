@@ -8,8 +8,19 @@ import 'package:wallpaper_app/presentation/screens/home/widgets/home_body.dart';
 
 import 'package:wallpaper_app/presentation/widgets/back_to_top_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    setupHomeService();
+  }
 
   @override
   Widget build(BuildContext context) {

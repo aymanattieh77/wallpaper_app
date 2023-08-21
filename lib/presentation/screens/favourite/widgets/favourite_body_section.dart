@@ -15,7 +15,8 @@ class FavouritesBodySection extends StatelessWidget {
         if (value.state == FavouriteStates.loading) {
           return customLoadingIndicator();
         } else if (value.state == FavouriteStates.error) {
-          return Container();
+          showErrorDialog(context, value.errorMessage);
+          return const SizedBox();
         } else if (value.state == FavouriteStates.empty) {
           return const FavouriteEmptyWidget();
         } else if (value.state == FavouriteStates.success) {

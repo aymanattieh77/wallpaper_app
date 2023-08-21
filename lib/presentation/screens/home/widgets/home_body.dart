@@ -23,7 +23,7 @@ class HomeBody extends StatelessWidget {
           children: [
             HomeHeaderSection(),
             SizedBox(height: AppConstants.kSize10),
-            HomeWallpaperSection(),
+            HomeWallpaperGirdviewSection(),
             LoadMoreWallpaperWidget(),
           ],
         ),

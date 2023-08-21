@@ -26,9 +26,7 @@ void startServiceLocator() {
   _setupRemoteAppService();
   _setupLocalAppService();
   _setupAppRepository();
-  setupHomeService();
-  setupWallpaperDetailService();
-  setupSearchService();
+
   setupFavouriteService();
 }
 

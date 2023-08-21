@@ -14,6 +14,7 @@ class FavouriteProvider extends ChangeNotifier {
       this._removeFavouritePhotoUsecase);
   FavouriteStates get state => _states;
   List<Photo> photos = [];
+  String errorMessage = "";
   void _setState(FavouriteStates state) {
     _states = state;
     notifyListeners();
@@ -31,6 +32,7 @@ class FavouriteProvider extends ChangeNotifier {
     _setState(FavouriteStates.loading);
     (await _getFavouritesUsecase.call(const NoParam())).fold(
       (failure) {
+        errorMessage = failure.message;
         _setState(FavouriteStates.error);
       },
       (photosList) {

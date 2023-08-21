@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
 import 'package:wallpaper_app/app/constants/colors.dart';
 
@@ -8,10 +9,13 @@ import 'package:wallpaper_app/app/constants/constants.dart';
 import 'package:wallpaper_app/app/core/routes.dart';
 
 import 'package:wallpaper_app/domain/entities/entities.dart';
+import 'package:wallpaper_app/presentation/controllers/wallpaper_detail_provider.dart';
 
 import 'package:wallpaper_app/presentation/screens/wallpaper_details/wallpapers_details_screen.dart';
 
 import 'package:wallpaper_app/presentation/widgets/favourite_icon_button.dart';
+
+import '../../app/core/service_locator.dart';
 
 class WallpaperCard extends StatelessWidget {
   const WallpaperCard({
@@ -23,9 +27,7 @@ class WallpaperCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          AppRouter.screen(WallpaperDetailScreen(photo: photo)),
-        );
+        _goToWallpaperDetailScreen(context);
       },
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
@@ -33,7 +35,7 @@ class WallpaperCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: AspectRatio(
-              aspectRatio: 5.5 / 8,
+              aspectRatio: 5.6 / 8,
               child: CachedNetworkImage(
                 imageUrl: photo.src.original,
                 fit: BoxFit.fill,
@@ -55,9 +57,7 @@ class WallpaperCard extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.sizeOf(context).height * .10,
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.all(AppConstants.kPadding10),
             decoration: BoxDecoration(
               color: AppColor.kkGrey.withOpacity(0.5),
               borderRadius: const BorderRadius.only(
@@ -66,6 +66,7 @@ class WallpaperCard extends StatelessWidget {
               ),
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -80,6 +81,19 @@ class WallpaperCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _goToWallpaperDetailScreen(BuildContext context) {
+    setupWallpaperDetailService();
+
+    Navigator.of(context).push(
+      AppRouter.screen(
+        ChangeNotifierProvider(
+          create: (context) => getIt<WallpaperDetailProvider>(),
+          child: WallpaperDetailScreen(photo: photo),
+        ),
       ),
     );
   }

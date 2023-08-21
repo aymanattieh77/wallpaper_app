@@ -17,6 +17,7 @@ class HomeProvider extends ChangeNotifier {
   bool isLoadMore = false;
   List<Photo> photos = [];
   int page = 0;
+  String errorMessage = "";
 
   void _setState(HomeStates state) {
     _state = state;
@@ -50,7 +51,7 @@ class HomeProvider extends ChangeNotifier {
 
     (await _usecase.call(page)).fold(
       (failure) {
-        //TODo
+        errorMessage = failure.message;
         _setState(HomeStates.error);
       },
       (photosList) {
