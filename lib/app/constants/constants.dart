@@ -1,5 +1,10 @@
 class AppConstants {
-// colors
+// values
+
+  static const kPadding20 = 20.0;
+  static const kPadding10 = 10.0;
+  static const kSize10 = 10.0;
+  static const kSize15 = 15.0;
 
   // API Constants
 
@@ -18,4 +23,8 @@ class AppConstants {
   static const String download = "Download";
   static const String youDontHaveFavourite =
       "You Don't Have Favourite Photos Yet!";
+
+  static const String imageDownloadedSuccessfully =
+      "Image downloaded successfully.";
+  static const String failedToDownloadImage = "Failed to download image.";
 }

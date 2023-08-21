@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/domain/entities/entities.dart';
 import 'package:wallpaper_app/domain/usecase/get_random_wallpapers_usecase.dart';
@@ -16,6 +18,11 @@ class HomeProvider extends ChangeNotifier {
   List<Photo> photos = [];
   int page = 0;
 
+  void _setState(HomeStates state) {
+    _state = state;
+    notifyListeners();
+  }
+
   start() {
     getRandomWallpapers();
     // add Listener in scrollController
@@ -29,24 +36,20 @@ class HomeProvider extends ChangeNotifier {
         scrollController.position.maxScrollExtent) {
       isLoadMore = true;
       _setState(HomeStates.success);
-      page++;
+
       await getRandomWallpapers(isFirstFetch: false);
     }
   }
 
-  void _setState(HomeStates state) {
-    _state = state;
-    notifyListeners();
-  }
-
   Future<void> getRandomWallpapers({bool isFirstFetch = true}) async {
+    page = _getRandomNumber();
     if (isFirstFetch) {
       _setState(HomeStates.loading);
     }
 
     (await _usecase.call(page)).fold(
       (failure) {
-        print(failure.message);
+        //TODo
         _setState(HomeStates.error);
       },
       (photosList) {
@@ -55,5 +58,13 @@ class HomeProvider extends ChangeNotifier {
         _setState(HomeStates.success);
       },
     );
+  }
+
+  Future<void> onRefresh() async {
+    await getRandomWallpapers();
+  }
+
+  int _getRandomNumber() {
+    return Random().nextInt(30);
   }
 }

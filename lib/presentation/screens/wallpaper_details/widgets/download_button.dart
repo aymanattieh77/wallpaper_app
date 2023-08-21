@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
+import 'package:wallpaper_app/presentation/controllers/wallpaper_detail_provider.dart';
 
 class DownloadButton extends StatelessWidget {
   const DownloadButton({
     super.key,
+    required this.imageUrl,
   });
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColor.kkBlack,
@@ -19,16 +22,21 @@ class DownloadButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        onPressed: () {}, // TODO
-        child: const Row(
+        onPressed: () {
+          context.read<WallpaperDetailProvider>().downloadWallpaper(imageUrl);
+        },
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.file_download_outlined, //TODO
-              color: AppColor.white,
-            ),
-            SizedBox(width: 5),
-            Text(
+            Consumer<WallpaperDetailProvider>(builder: (_, value, __) {
+              bool isSuccess = value.state == WallpaperDetailStates.success;
+              return Icon(
+                isSuccess ? Icons.download_done : Icons.file_download_outlined,
+                color: isSuccess ? AppColor.green : AppColor.white,
+              );
+            }),
+            const SizedBox(width: 5),
+            const Text(
               AppConstants.download,
               style: TextStyle(
                 fontSize: 20,

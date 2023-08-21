@@ -18,6 +18,7 @@ import 'package:wallpaper_app/domain/usecase/search_photos_usecase.dart';
 import 'package:wallpaper_app/presentation/controllers/favourite_provider.dart';
 import 'package:wallpaper_app/presentation/controllers/home_provider.dart';
 import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
+import 'package:wallpaper_app/presentation/controllers/wallpaper_detail_provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -25,7 +26,7 @@ void startServiceLocator() {
   _setupRemoteAppService();
   _setupLocalAppService();
   _setupAppRepository();
-  setupUseCases();
+  setupWallpaperDetailService();
   setupFavouriteService();
 }
 
@@ -54,7 +55,12 @@ _setupAppRepository() {
       () => FavouriteRepositoryImpl(getIt()));
 }
 
-setupUseCases() {}
+setupWallpaperDetailService() {
+  if (!GetIt.I.isRegistered<WallpaperDetailProvider>()) {
+    getIt.registerFactory<WallpaperDetailProvider>(
+        () => WallpaperDetailProvider());
+  }
+}
 
 void setupFavouriteService() {
   if (!GetIt.I.isRegistered<FavouriteProvider>()) {

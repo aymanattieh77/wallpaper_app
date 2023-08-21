@@ -12,16 +12,21 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: Provider.of<HomeProvider>(context).scrollController,
-      physics: const BouncingScrollPhysics(),
-      child: const Column(
-        children: [
-          HomeHeaderSection(),
-          SizedBox(height: 10),
-          HomeWallpaperSection(),
-          LoadMoreWallpaperWidget(),
-        ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        print("sdsd");
+      },
+      child: SingleChildScrollView(
+        controller: Provider.of<HomeProvider>(context).scrollController,
+        physics: const BouncingScrollPhysics(),
+        child: const Column(
+          children: [
+            HomeHeaderSection(),
+            SizedBox(height: 10),
+            HomeWallpaperSection(),
+            LoadMoreWallpaperWidget(),
+          ],
+        ),
       ),
     );
   }
