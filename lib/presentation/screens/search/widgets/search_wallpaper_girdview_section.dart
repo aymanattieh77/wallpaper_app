@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:wallpaper_app/app/core/functions.dart';
+
 import 'package:wallpaper_app/presentation/controllers/search_provider.dart';
+
 import 'package:wallpaper_app/presentation/widgets/wallpaper_girdview.dart';
 
 class SearchWallpaperGirdviewSection extends StatelessWidget {

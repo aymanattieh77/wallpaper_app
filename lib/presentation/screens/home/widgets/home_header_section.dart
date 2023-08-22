@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
+
 import 'package:wallpaper_app/app/core/routes.dart';
+
 import 'package:wallpaper_app/presentation/screens/search/widgets/search_field.dart';
 
 class HomeHeaderSection extends StatelessWidget {
@@ -15,7 +18,7 @@ class HomeHeaderSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: AppConstants.kSize15),
           Row(
             children: [
               Column(
@@ -34,13 +37,13 @@ class HomeHeaderSection extends StatelessWidget {
               const Spacer(),
               IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.favourites);
+                  _goToFavouriteScreen(context);
                 },
                 icon: const Icon(Icons.favorite, color: AppColor.black),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: AppConstants.kSize15),
           InkWell(
             onTap: () {
               _goSearchScreen(context);
@@ -56,5 +59,9 @@ class HomeHeaderSection extends StatelessWidget {
 
   _goSearchScreen(BuildContext context) {
     Navigator.of(context).pushNamed(Routes.search);
+  }
+
+  _goToFavouriteScreen(BuildContext context) {
+    Navigator.of(context).pushNamed(Routes.favourites);
   }
 }

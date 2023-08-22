@@ -4,7 +4,6 @@ import 'package:wallpaper_app/app/constants/colors.dart';
 final defaultTheme = ThemeData(
   fontFamily: "Lato",
   scaffoldBackgroundColor: Colors.white,
-  // useMaterial3: true,
   textTheme: const TextTheme(
     bodyLarge: TextStyle(
         fontSize: 24, fontWeight: FontWeight.bold, color: AppColor.black),

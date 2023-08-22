@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:wallpaper_app/app/constants/constants.dart';
 import 'package:wallpaper_app/app/core/service_locator.dart';
 
@@ -32,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Scaffold _getScreenContent() {
+  Widget _getScreenContent() {
     return Scaffold(
       appBar: const CustomAppbar(title: AppConstants.searchPhotos),
       body: const SearchBody(),
@@ -40,7 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Builder _searchScrollToTopButton() {
+  Widget _searchScrollToTopButton() {
     return Builder(builder: (ctx) {
       return BackToTopButton(
         scrollController: ctx.read<SearchProvider>().scrollController,

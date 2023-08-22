@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:wallpaper_app/data/errors/failure.dart';
+
 import 'package:wallpaper_app/domain/entities/entities.dart';
 
 abstract class FavouriteRepository {

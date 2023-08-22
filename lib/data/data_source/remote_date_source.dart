@@ -1,11 +1,19 @@
+import 'package:wallpaper_app/app/constants/constants.dart';
+
 import 'package:wallpaper_app/data/models/models.dart';
+
 import 'package:wallpaper_app/data/remote/wallpaper_service.dart';
 
 abstract class RemoteDataSource {
   Future<ResponseModel> searchPhotos(
-      {required String query, int page = 1, int perPage = 12});
+      {required String query,
+      int page = 1,
+      int perPage = AppConstants.perPage});
 
-  Future<ResponseModel> getRandomWallpapers({int page = 1, int perPage = 12});
+  Future<ResponseModel> getRandomWallpapers({
+    int page = 1,
+    int perPage = AppConstants.perPage,
+  });
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {

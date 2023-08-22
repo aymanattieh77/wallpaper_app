@@ -18,7 +18,7 @@ class LoadMoreWallpaperWidget extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Container();
+        return const SizedBox();
       },
     );
   }

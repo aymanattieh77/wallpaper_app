@@ -1,7 +1,11 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:wallpaper_app/data/errors/failure.dart';
+
 import 'package:wallpaper_app/domain/entities/entities.dart';
+
 import 'package:wallpaper_app/domain/repository/repositories.dart';
+
 import 'package:wallpaper_app/domain/usecase/base_usecase.dart';
 
 class GetRandomWallpapersUsecase extends BaseUsecase<List<Photo>, int> {

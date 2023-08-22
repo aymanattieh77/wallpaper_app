@@ -3,11 +3,15 @@
 import 'dart:ffi';
 
 import 'package:dartz/dartz.dart';
-import 'package:sqflite/sqflite.dart';
+
 import 'package:wallpaper_app/data/data_source/local_data_source.dart';
+
 import 'package:wallpaper_app/data/errors/failure.dart';
+
 import 'package:wallpaper_app/data/mappers/mappers.dart';
+
 import 'package:wallpaper_app/domain/entities/entities.dart';
+
 import 'package:wallpaper_app/domain/repository/repositories.dart';
 
 class FavouriteRepositoryImpl implements FavouriteRepository {
@@ -18,8 +22,8 @@ class FavouriteRepositoryImpl implements FavouriteRepository {
     try {
       await _dataSource.insertPhoto(photo.toModel());
       return const Right(Void);
-    } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.result.toString()));
+    } on LocalException catch (e) {
+      return Left(DatabaseFailure(e.message));
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
     }
@@ -30,8 +34,8 @@ class FavouriteRepositoryImpl implements FavouriteRepository {
     try {
       final photos = await _dataSource.getPhotos();
       return Right(photos);
-    } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.result.toString()));
+    } on LocalException catch (e) {
+      return Left(DatabaseFailure(e.message));
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
     }
@@ -42,8 +46,8 @@ class FavouriteRepositoryImpl implements FavouriteRepository {
     try {
       await _dataSource.deletePhoto(id);
       return const Right(Void);
-    } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.result.toString()));
+    } on LocalException catch (e) {
+      return Left(DatabaseFailure(e.message));
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
     }

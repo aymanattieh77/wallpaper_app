@@ -1,6 +1,9 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:wallpaper_app/data/errors/failure.dart';
+
 import 'package:wallpaper_app/domain/repository/repositories.dart';
+
 import 'package:wallpaper_app/domain/usecase/base_usecase.dart';
 
 class RemoveFavouritePhotoUsecase extends BaseUsecase<void, int> {

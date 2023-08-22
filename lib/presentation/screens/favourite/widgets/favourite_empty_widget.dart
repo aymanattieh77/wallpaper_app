@@ -13,9 +13,10 @@ class FavouriteEmptyWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(Icons.favorite, size: 150),
-        const SizedBox(height: 30),
+        const SizedBox(height: AppConstants.kSize15 * 2),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppConstants.kPadding20),
           child: Text(
             AppConstants.youDontHaveFavourite,
             textAlign: TextAlign.center,

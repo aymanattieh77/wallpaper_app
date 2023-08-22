@@ -10,3 +10,8 @@ abstract class Failure extends Equatable {
 class DatabaseFailure extends Failure {
   const DatabaseFailure(super.message);
 }
+
+class LocalException implements Exception {
+  final String message;
+  LocalException(this.message);
+}

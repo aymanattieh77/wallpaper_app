@@ -15,7 +15,7 @@ import 'package:wallpaper_app/presentation/screens/wallpaper_details/wallpapers_
 
 import 'package:wallpaper_app/presentation/widgets/favourite_icon_button.dart';
 
-import '../../app/core/service_locator.dart';
+import 'package:wallpaper_app/app/core/service_locator.dart';
 
 class WallpaperCard extends StatelessWidget {
   const WallpaperCard({
@@ -33,7 +33,7 @@ class WallpaperCard extends StatelessWidget {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(AppConstants.kSize10),
             child: AspectRatio(
               aspectRatio: 5.6 / 8,
               child: CachedNetworkImage(
@@ -61,8 +61,8 @@ class WallpaperCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColor.kkGrey.withOpacity(0.5),
               borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(AppConstants.kSize10),
+                bottomLeft: Radius.circular(AppConstants.kSize10),
               ),
             ),
             child: Column(

@@ -1,10 +1,17 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'package:wallpaper_app/app/constants/constants.dart';
+
+import 'package:wallpaper_app/data/errors/failure.dart';
+
 import 'package:wallpaper_app/data/models/models.dart';
+
 import 'package:wallpaper_app/domain/entities/entities.dart';
 
 const String tabelName = "photos";
 const String databasePath = "photo_database.db";
+const int version = 1;
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -22,13 +29,14 @@ class DatabaseHelper {
     final path = join(dbPath, databasePath);
     return await openDatabase(
       path,
-      version: 1,
+      version: version,
       onCreate: _createDatabase,
     );
   }
 
   Future<void> _createDatabase(Database db, int version) async {
-    await db.execute('''
+    try {
+      await db.execute('''
       CREATE TABLE $tabelName (
         id INTEGER PRIMARY KEY,
         width INTEGER,
@@ -41,55 +49,61 @@ class DatabaseHelper {
         src_medium TEXT
       )
     ''');
+    } catch (e) {
+      throw LocalException(AppConstants.failedToCreateDatabase);
+    }
   }
 
   Future<void> insertPhoto(PhotoModel photo) async {
-    final db = await database;
-    await db.insert(
-      tabelName,
-      photo.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    try {
+      final db = await database;
+      await db.insert(
+        tabelName,
+        photo.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    } catch (e) {
+      throw LocalException(AppConstants.failedToInsertPhoto);
+    }
   }
-  // Future<void> updatePhoto(PhotoModel photo) async {
-  //   final db = await database;
-  //   await db.update(
-  //     tabelName,
-  //     photo.toMap(),
-  //     where: 'id = ?',
-  //     whereArgs: [photo.id],
-  //   );
-  // }
 
   Future<void> deletePhoto(int id) async {
-    final db = await database;
-    await db.delete(
-      tabelName,
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    try {
+      final db = await database;
+      await db.delete(
+        tabelName,
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+    } catch (e) {
+      throw LocalException(AppConstants.failedToDeletePhoto);
+    }
   }
 
   Future<List<Photo>> getPhotos() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(tabelName);
-    return List.generate(
-      maps.length,
-      (i) {
-        return Photo(
-          width: maps[i]['width'],
-          height: maps[i]['height'],
-          id: maps[i]['id'],
-          alt: maps[i]['alt'],
-          url: maps[i]['url'],
-          src: Src(
-            original: maps[i]['src_original'],
-            large: maps[i]['src_large'],
-            medium: maps[i]['src_medium'],
-          ),
-          photographer: maps[i]['photographer'],
-        );
-      },
-    );
+    try {
+      final db = await database;
+      final List<Map<String, dynamic>> maps = await db.query(tabelName);
+      return List.generate(
+        maps.length,
+        (i) {
+          return Photo(
+            width: maps[i]['width'],
+            height: maps[i]['height'],
+            id: maps[i]['id'],
+            alt: maps[i]['alt'],
+            url: maps[i]['url'],
+            src: Src(
+              original: maps[i]['src_original'],
+              large: maps[i]['src_large'],
+              medium: maps[i]['src_medium'],
+            ),
+            photographer: maps[i]['photographer'],
+          );
+        },
+      );
+    } catch (e) {
+      throw LocalException(AppConstants.failedToGetPhotos);
+    }
   }
 }

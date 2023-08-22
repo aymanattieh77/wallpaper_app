@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
 import 'package:wallpaper_app/data/errors/failure.dart';
 
 abstract class BaseUsecase<Output, Param> {

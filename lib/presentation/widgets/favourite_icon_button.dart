@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:wallpaper_app/app/constants/colors.dart';
+
 import 'package:wallpaper_app/domain/entities/entities.dart';
+
 import 'package:wallpaper_app/presentation/controllers/favourite_provider.dart';
 
 class FavouriteIconButton extends StatelessWidget {

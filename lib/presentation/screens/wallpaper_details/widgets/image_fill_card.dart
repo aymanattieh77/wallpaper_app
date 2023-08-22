@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageFillCard extends StatelessWidget {
   const ImageFillCard({super.key, required this.imageUrl});
@@ -7,8 +7,8 @@ class ImageFillCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
+      width: MediaQuery.sizeOf(context).width,
+      height: MediaQuery.sizeOf(context).height,
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         fit: BoxFit.fill,

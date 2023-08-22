@@ -28,7 +28,7 @@ class DioFactory {
 
     if (kDebugMode) {
       _dio.interceptors
-          .add(LogInterceptor(requestHeader: false, responseHeader: false));
+          .add(LogInterceptor(requestHeader: true, responseHeader: false));
     }
   }
 }

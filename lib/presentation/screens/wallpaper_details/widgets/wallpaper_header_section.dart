@@ -13,7 +13,7 @@ class WallpaperDetailHeaderSection extends StatelessWidget {
       alignment: AlignmentDirectional.topCenter,
       child: Container(
         color: AppColor.kkGrey.withOpacity(0.5),
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(AppConstants.kPadding20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

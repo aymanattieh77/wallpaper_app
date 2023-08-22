@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+
 import 'package:wallpaper_app/app/constants/colors.dart';
 import 'package:wallpaper_app/app/constants/constants.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 class ErrorStateWidget extends StatelessWidget {
   const ErrorStateWidget({super.key, required this.errorMessage});

@@ -1,4 +1,4 @@
-class AppConstants {
+abstract class AppConstants {
 // values
 
   static const kPadding20 = 20.0;
@@ -11,12 +11,14 @@ class AppConstants {
   static const pexelsBaseUrl = "https://api.pexels.com/v1/";
   static const apiKey =
       "NzfYIWZhIJiZXlfrX9sLdnm0jdLr6VN54nPQoR0XjDijJsw7cYaAdBcc";
-
+  static const int perPage = 12;
   //  App Strings
+  static const String appName = "Wallpaper App";
   static const String exploreFree = "Explore Free";
   static const String wallpapers = "Wallpapers";
   static const String searchPhotos = "Search Photos";
   static const String searchforFreePhotos = "Search for free photos";
+  static const String youSearchFor = "You Search For ";
   static const String photographerBy = "photographer By";
   static const String search = "Search";
   static const String favoritesPhotos = "Favorites Photos";
@@ -27,4 +29,11 @@ class AppConstants {
   static const String imageDownloadedSuccessfully =
       "Image downloaded successfully.";
   static const String failedToDownloadImage = "Failed to download image.";
+
+  static const String somethingWentWrong = "Something Went Wrong";
+
+  static const String failedToCreateDatabase = "Failed to Create Database";
+  static const String failedToInsertPhoto = "Failed Insert Photo";
+  static const String failedToDeletePhoto = "Failed To Delete Photo";
+  static const String failedToGetPhotos = "Failed To Get Photos";
 }

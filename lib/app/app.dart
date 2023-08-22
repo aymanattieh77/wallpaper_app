@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:wallpaper_app/app/constants/constants.dart';
+
 import 'package:wallpaper_app/app/core/routes.dart';
+
 import 'package:wallpaper_app/app/theme/theme.dart';
+
 import 'package:wallpaper_app/presentation/screens/home/home_screen.dart';
 
 class WallpaperApp extends StatelessWidget {
@@ -10,7 +15,7 @@ class WallpaperApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Wallpaper App',
+      title: AppConstants.appName,
       theme: defaultTheme,
       home: const HomeScreen(),
       onGenerateRoute: AppRouter.onGenerateRoute,
